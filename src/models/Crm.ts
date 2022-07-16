@@ -19,4 +19,9 @@ const CrmSchema = new Schema({
   }
 })
 
+CrmSchema.methods.toJSON = function () {
+  const { __v, ...data } = this.toObject();
+  return data;
+};
+
 export default model('crm', CrmSchema)
