@@ -13,6 +13,10 @@ const CrmSchema = new Schema({
   Telefonos: {
     type: String,
   },
+  Campaña: {
+    type: Schema.Types.ObjectId,
+    required: [true, 'La campaña es requerida']
+  }
 })
 
 export default model('crm', CrmSchema)

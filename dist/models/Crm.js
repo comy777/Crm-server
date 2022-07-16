@@ -14,5 +14,9 @@ const CrmSchema = new mongoose_1.Schema({
     Telefonos: {
         type: String,
     },
+    Campaña: {
+        type: mongoose_1.Schema.Types.ObjectId,
+        required: [true, 'La campaña es requerida']
+    }
 });
 exports.default = (0, mongoose_1.model)('crm', CrmSchema);

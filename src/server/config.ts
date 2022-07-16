@@ -4,10 +4,12 @@ import fileUpload from 'express-fileupload'
 import path from 'path'
 import database from '../db/config';
 import uploadRouter from '../routes/upload';
+import campañaRouter from '../routes/campaña';
 
 class Server {
   private path : {
-    upload: string
+    upload: string,
+    campaña: string
   }
   private port : number
   private app : express.Application
@@ -15,7 +17,8 @@ class Server {
     this.app = express()
     this.port = process.env.PORT,
     this.path = {
-      upload: '/upload'
+      upload: '/upload',
+      campaña: '/campaña'
     },
     this.db()
     this.middlewares()
@@ -51,7 +54,8 @@ class Server {
   }
 
   routes(){
-    this.app.use(this.path.upload, uploadRouter)
+    this.app.use(this.path.upload, uploadRouter),
+    this.app.use(this.path.campaña, campañaRouter)
   }
 }
 

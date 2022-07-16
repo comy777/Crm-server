@@ -16,6 +16,7 @@ exports.validateFile = void 0;
 const upload_1 = require("./upload");
 const xlsx_1 = __importDefault(require("xlsx"));
 const Crm_1 = __importDefault(require("../models/Crm"));
+const Campa_a_1 = __importDefault(require("../models/Campa\u00F1a"));
 const validateFile = (file) => __awaiter(void 0, void 0, void 0, function* () {
     const { name, tempFilePath } = file;
     const extension = name.split('.');
@@ -26,8 +27,10 @@ const validateFile = (file) => __awaiter(void 0, void 0, void 0, function* () {
         const workBookSheets = workBook.SheetNames;
         const sheet = workBookSheets[0];
         const dataColumns = xlsx_1.default.utils.sheet_to_json(workBook.Sheets[sheet]);
+        const campañas = yield Campa_a_1.default.find();
+        const campaña = campañas[campañas.length - 1];
         dataColumns.map((item) => __awaiter(void 0, void 0, void 0, function* () {
-            const data = { Nombres: item.Nombres, Apellidos: item.Apellidos, Direcciones: item.Direcciones, Telefonos: item.Telefonos };
+            const data = { Nombres: item.Nombres, Apellidos: item.Apellidos, Direcciones: item.Direcciones, Telefonos: item.Telefonos, Campaña: campaña._id };
             const crm = new Crm_1.default(data);
             yield crm.save();
             return data;
