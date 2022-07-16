@@ -23,7 +23,7 @@ const uploadFile = (req, res) => __awaiter(void 0, void 0, void 0, function* () 
         const validate = (0, validateFile_1.validateFile)(file);
         if (!validate)
             return res.send({ error: 'Error al subir el archivo' });
-        return res.send({ msg: 'Archibo guardao con exito' });
+        return res.send({ msg: 'Archivo guardado con exito' });
     }
     catch (error) {
         console.log(error);

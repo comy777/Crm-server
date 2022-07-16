@@ -35,7 +35,6 @@ const validateFile = (file) => __awaiter(void 0, void 0, void 0, function* () {
         yield (0, upload_1.subirArchivos)(file);
         return true;
     }
-    console.log('Extension no valida');
     return false;
 });
 exports.validateFile = validateFile;

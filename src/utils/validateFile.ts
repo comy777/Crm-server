@@ -21,6 +21,5 @@ export const validateFile = async (file: any) =>{
     await subirArchivos(file)
     return true
   }
-  console.log('Extension no valida');
   return false  
 }

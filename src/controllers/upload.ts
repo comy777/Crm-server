@@ -12,7 +12,7 @@ export const uploadFile = async (req: Request, res: Response) => {
     const { file } = req.files;
     const validate = validateFile(file)
     if(!validate) return res.send({error: 'Error al subir el archivo'})
-    return res.send({ msg: 'Archibo guardao con exito' });
+    return res.send({ msg: 'Archivo guardado con exito' });
   } catch (error) {
     console.log(error);
     res.send({
