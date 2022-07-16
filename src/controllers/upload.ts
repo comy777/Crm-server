@@ -1,4 +1,5 @@
 import { Request, Response } from "express";
+import Crm from "../models/Crm";
 import { validateFile } from '../utils/validateFile';
 
 export const uploadFile = async (req: Request, res: Response) => {
@@ -20,3 +21,8 @@ export const uploadFile = async (req: Request, res: Response) => {
     });
   }
 };
+
+export const getDataCrm = async (req: Request, resp: Response) => {
+  const data = await Crm.find()
+  return resp.send({results: data})
+}

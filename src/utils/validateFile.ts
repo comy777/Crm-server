@@ -1,7 +1,7 @@
 import {subirArchivos} from './upload'
 import XLSX from 'xlsx'
 import Crm from '../models/Crm'
-import Campaña from '../models/Campaña'
+import Campaign from '../models/Campaign'
 
 export const validateFile = async (file: any) =>{
   const {name, tempFilePath} = file
@@ -13,7 +13,7 @@ export const validateFile = async (file: any) =>{
     const workBookSheets = workBook.SheetNames;
     const sheet = workBookSheets[0]
     const dataColumns = XLSX.utils.sheet_to_json(workBook.Sheets[sheet])
-    const campañas = await Campaña.find()
+    const campañas = await Campaign.find()
     const campaña = campañas[campañas.length - 1]
     dataColumns.map(async (item : any) => {
       const data = {Nombres: item.Nombres, Apellidos: item.Apellidos, Direcciones: item.Direcciones, Telefonos: item.Telefonos, Campaña: campaña._id}

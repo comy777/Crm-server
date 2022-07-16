@@ -1,15 +1,15 @@
 import {Schema, model} from 'mongoose'
 
-const CampañaSchema = new Schema({
-  campaña: {
+const CampaignSchema = new Schema({
+  campaign: {
     type: String,
     required: [true, "El tipo de campaña es requerido"]
   }
 })
 
-CampañaSchema.methods.toJSON = function () {
+CampaignSchema.methods.toJSON = function () {
   const { __v, ...data } = this.toObject();
   return data;
 };
 
-export default model('campaña', CampañaSchema)
+export default model('campaña', CampaignSchema)

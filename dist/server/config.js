@@ -18,14 +18,16 @@ const express_fileupload_1 = __importDefault(require("express-fileupload"));
 const path_1 = __importDefault(require("path"));
 const config_1 = __importDefault(require("../db/config"));
 const upload_1 = __importDefault(require("../routes/upload"));
-const campa_a_1 = __importDefault(require("../routes/campa\u00F1a"));
+const campaign_1 = __importDefault(require("../routes/campaign"));
+const data_1 = __importDefault(require("../routes/data"));
 class Server {
     constructor() {
         this.app = (0, express_1.default)();
         this.port = process.env.PORT,
             this.path = {
                 upload: '/upload',
-                campaña: '/campaña'
+                campaign: '/campaign',
+                getData: '/data'
             },
             this.db();
         this.middlewares();
@@ -57,7 +59,8 @@ class Server {
     }
     routes() {
         this.app.use(this.path.upload, upload_1.default),
-            this.app.use(this.path.campaña, campa_a_1.default);
+            this.app.use(this.path.campaign, campaign_1.default),
+            this.app.use(this.path.getData, data_1.default);
     }
 }
 exports.default = Server;

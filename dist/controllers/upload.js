@@ -8,8 +8,12 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
         step((generator = generator.apply(thisArg, _arguments || [])).next());
     });
 };
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.uploadFile = void 0;
+exports.getDataCrm = exports.uploadFile = void 0;
+const Crm_1 = __importDefault(require("../models/Crm"));
 const validateFile_1 = require("../utils/validateFile");
 const uploadFile = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     if (!req.files || Object.keys(req.files).length === 0) {
@@ -33,3 +37,8 @@ const uploadFile = (req, res) => __awaiter(void 0, void 0, void 0, function* () 
     }
 });
 exports.uploadFile = uploadFile;
+const getDataCrm = (req, resp) => __awaiter(void 0, void 0, void 0, function* () {
+    const data = yield Crm_1.default.find();
+    return resp.send({ results: data });
+});
+exports.getDataCrm = getDataCrm;
